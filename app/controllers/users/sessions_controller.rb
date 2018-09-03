@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-class User::SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+  layout false
+  layout 'admin_signin'
   # GET /resource/sign_in
-  def new
-    render html: "hello, world!"
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
   # def create
