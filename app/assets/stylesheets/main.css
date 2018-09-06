@@ -1887,17 +1887,17 @@ h1, h2, h3, h4, h5, h6 {
 
 #header hr {
   border-color: rgba(255, 255, 255, 0.3);
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .header-top {
   height: 24px;
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
 .header-top a {
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .top-head-left ul li {
@@ -2043,7 +2043,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   color: #fff;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   outline: none;
 }
@@ -2201,7 +2201,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .section-gap {
-  padding: 120px 0;
+  padding: 50px 0;
 }
 
 .section-title {
@@ -2301,7 +2301,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-content {
-  margin-top: -90px;
   text-align: center;
 }
 
@@ -2310,11 +2309,50 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 700;
   line-height: 1em;
   margin-top: 20px;
+  text-transform: uppercase;
 }
 
 .banner-content h1 span {
   font-weight: 700;
 }
+
+/* New Css 4 Sept 2018 Starts */
+
+.banner-content p{
+  font-size: 20px;
+}
+.quote-area{
+  text-align: center;
+}
+.quote-area h5{
+  font-weight: 500;
+}
+.single-exibition video{
+  height: 205px;
+}
+.single-blog .thumb .thumb_img{
+  height: 170px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; 
+  width: 100%;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.single-blog:hover .thumb_img {
+  transform: scale(1.1);
+}
+.single-blog .primary-btn{
+  color: #FFF;
+}
+.single-blog .primary-btn:hover{
+  color: #88d200;
+}
+
+/* New Css 4 Sept 2018 Ends */
 
 @media (max-width: 991.98px) {
   .banner-content h1 {
@@ -2512,7 +2550,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-exibition h4 {
-  padding-bottom: 20px;
+  padding: 15px 0px;
 }
 
 .single-exibition .date {
@@ -2565,7 +2603,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .blog-area {
-  background-color: #f9f9ff;
+  /*background-color: #f9f9ff;*/
 }
 
 .single-blog .thumb {
@@ -2603,7 +2641,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .single-blog .date {
   background-color: #000;
   color: #fff;
-  font-weight: 100;
+  font-weight: 300;
   padding: 2px 15px;
   width: 115px;
   text-align: center;
@@ -2643,7 +2681,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .footer-area {
-  padding-top: 100px;
+  padding-top: 50px;
   background-color: #fff;
 }
 

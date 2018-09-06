@@ -185,20 +185,21 @@ $(document).ready(function(){
         margin:30,
         autoplay:true,
         loop:true,
-        dots: true,       
-            responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 1,
-            },
-            768: {
-                items: 2,
-            },
-            900: {
-                items: 3,
-            }
+        dots: true,
+        autoplayHoverPause: true,     
+        responsive: {
+          0: {
+              items: 1
+          },
+          480: {
+              items: 1,
+          },
+          768: {
+              items: 2,
+          },
+          900: {
+              items: 3,
+          }
 
         }
     });

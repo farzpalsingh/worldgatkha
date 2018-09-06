@@ -36,21 +36,25 @@
   <body>
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
+    
     <header id="header" id="home">
       <div class="container header-top">
         <div class="row">
           <div class="col-6 top-head-left">
             <ul>
               <li><a href="#">Visit Us</a></li>
-              <li><a href="#">Buy Ticket</a></li>
+              <!-- <li><a href="#">Buy Ticket</a></li> -->
             </ul>
           </div>
           <div class="col-6 top-head-right">
             <ul>
               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-rss"></i></a></li>
+              <% if user_signed_in? %>
+                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, data: {confirm: 'Are you Sure you want to log out?'} %></li>
+              <% end %>
             </ul>
           </div>              
         </div>
@@ -64,19 +68,18 @@
           <nav id="nav-menu-container">
             <ul class="nav-menu">
               <li class="menu-active"><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
               <li><a href="event.html">Events</a></li>
-              <li><a href="ticket.html">Ticket</a></li>
-              <li><a href="blog-home.html">Blog</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li class="menu-has-children"><a href="">Pages</a>
+              <li class="menu-has-children">
+                <a href="">Gallery</a>
                 <ul>
-                  <li><a href="blog-single.html">Blog Single</a></li>
-                  <li><a href="category.html">Category</a></li>
+                  <li><a href="blog-single.html">Images</a></li>
+                  <li><a href="category.html">Videos</a></li>
                   <li><a href="elements.html">Elements</a></li>
                 </ul>
-              </li>               
+              </li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+                            
             </ul>
           </nav><!-- #nav-menu-container -->            
         </div>
@@ -92,13 +95,13 @@
             <div class="single-footer-widget">
               <h6>About Us</h6>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+                Gatka is commonly referred to as an India Martial art. Specifically Gatka refers to the martial art used by the of northern India. Actually Gatka is the name of a stick used to practice sword fighting. The word Gatka is a slang expression coined in the nineteen hundreds to describe a number of stick, staff and sword styles made for use in public demonstration.
               </p>
-              <p class="footer-text">
+              <!-- <p class="footer-text"> -->
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> and distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+<!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> and distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a> -->
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              </p>
+              <!-- </p> -->
             </div>
           </div>
           <div class="col-lg-5  col-md-6 col-sm-6">
@@ -125,8 +128,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
               <div class="footer-social d-flex align-items-center">
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-                <a href="#"><i class="fa fa-behance"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-rss"></i></a>
               </div>
             </div>
           </div>              

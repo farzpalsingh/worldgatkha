@@ -1,0 +1,64 @@
+<div class="container-fluid">
+	<!-- Breadcrumbs-->
+	<ol class="breadcrumb">
+	    <li class="breadcrumb-item">
+	    	<%= link_to "Dashboard", admin_index_path %>
+	    </li>
+	    <li class="breadcrumb-item">News</li>
+	    <li class="breadcrumb-item active">Add News</li>
+	</ol>
+
+	<!-- Page Content -->
+	<h3>Add News</h3>
+	<hr>
+	<div class="addNewsForm">
+		<%= form_for(:news, :url => admin_news_create_path) do |f| %>
+            <div class="form-group">
+              	<div class="form-label-group-new">
+	              	<%= f.label :title %>
+	                <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control', placeholder: "Enter News Title" %>
+              	</div>
+            </div>
+
+            <div class="form-group">
+              	<div class="form-label-group-new">
+	              	<%= f.label :description %>
+	                <%= f.text_area :description, autocomplete: "current-password", class: 'form-control',placeholder: "Enter News Description", rows: "5" %>
+	            </div>
+            </div>
+            <div class="form-group">
+              	<div class="form-label-group-new">
+              		<%= f.label :datetime %>
+	              	<%= f.date_field :datetime, class: 'form-control' %>
+              	</div>
+            </div>
+            
+            <div class="form-group">
+                <div class="checkbox">
+                  	<%= f.check_box :is_active %>
+                  	<%= f.label :is_active, "Keep Active" %>
+                </div>
+            </div>
+
+            <%#= f.fields_for :attachment do |ff| %>
+				<!-- <div class="form-group">
+              		<div class="form-label-group-new">
+					    <%#= ff.label :title, 'Image Title' %><br>
+					    <%#= ff.text_field :title, class: 'form-control', placeholder: "Enter Image Title" %>
+					</div>
+				</div>
+				<div class="form-group">
+              		<div class="form-label-group-new">
+					    <%#= ff.label :image, 'Upload Image' %><br>
+					    <%#= ff.file_field :image %>
+					</div>
+				</div> -->
+			<%# end %>
+
+            <div class="actions">
+              <%= f.submit "Add News", :class => 'btn btn-primary btn-block' %>
+            </div>
+        <% end %>
+	</div>
+</div>
+<!-- /.container-fluid -->
