@@ -1,4 +1,5 @@
-
+//= require rails-ujs
+//= require activestorage
 $(document).ready(function(){
 	"use strict";
 
@@ -204,6 +205,29 @@ $(document).ready(function(){
         }
     });
 
+    $('.single-blogNW').owlCarousel({
+        items:4,
+        margin:20,
+        autoplay:true,
+        loop:true,
+        dots: true,
+        autoplayHoverPause: true,     
+        responsive: {
+          0: {
+              items: 1
+          },
+          600: {
+              items: 2,
+          },
+          900: {
+              items: 3,
+          },
+          1040: {
+              items: 4
+          }
+        }
+    });
+
 
   //  Gallery 
 
@@ -263,13 +287,5 @@ $(document).ready(function(){
 
         $(document).ready(function() {
             $('#mc_embed_signup').find('form').ajaxChimp();
-        });      
-
-
-
-
-
-
-
-
+        }); 
  });

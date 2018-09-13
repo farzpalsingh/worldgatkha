@@ -1,0 +1,36 @@
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">	
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Event Detail				
+				</h1>	
+				<p class="text-white link-nav"><%= link_to 'Home', home_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Event Detail', 'javascript:;' %></p>
+			</div>											
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->	
+
+<!-- Start blog-posts Area -->
+<section class="blog-posts-area section-gap">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 post-list blog-post-list">
+				<div class="single-post">
+					<%= Event.getYoutubeIframe(@event.video_url) %>
+					<p class="date"><%= @event.datetime.strftime("%d %b %Y") %></p>
+					<h1>
+						<%= @event.title %>
+					</h1>
+					<p>
+						<%= @event.description %>
+					</p>
+				</div>																				
+			</div>
+		</div>
+	</div>	
+</section>
+<!-- End blog-posts Area -->

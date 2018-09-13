@@ -13,6 +13,14 @@ body {
   height: 100%;
 }
 
+ul{
+  list-style: none;
+  padding-left: 0px;
+}
+img{
+  max-width: 100%;
+}
+
 #wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -391,5 +399,6 @@ body.sidebar-toggled footer.sticky-footer {
 
 .addNewsForm{padding-bottom: 30px;}
 .table th, .table td{padding: 8px 10px; font-size: 14px;}
+.adminActions{display: flex;justify-content: space-around;}
 
 /* New Css 5 Sept 2018 Ends */

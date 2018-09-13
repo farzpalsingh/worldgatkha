@@ -1,0 +1,46 @@
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">	
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Our Events
+				</h1>	
+				<p class="text-white link-nav"><%= link_to 'Home', home_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Events', events_path %></p>
+			</div>											
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->	
+
+
+<!-- Start upcoming-exibition Area -->
+<section class="upcoming-exibition-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-20 col-lg-8">
+				<div class="title text-center">
+					<h1 class="mb-10">Checkout our Events</h1>
+					<p>Lets Play Gutka</p>
+				</div>
+			</div>
+		</div>						
+		<div class="row">
+			<% @events.each do |event| %>
+				<div class="col-lg-4 col-md-6 single-exhibition">
+					<div class="thumb">
+						<%= Event.getYoutubeIframe(event.video_url) %>					
+					</div>
+					<p class="date"><%= event.datetime.strftime("%d %b %Y") %></p>
+					<a href="#"><h4><%= event.title %></h4></a>
+					<p>
+						<%= truncate(event.description, :length => 120) %>
+					</p>
+					<%= link_to 'View Details', event_path(event), class: 'primary-btn text-uppercase' %>
+				</div>
+			<% end %>																
+		</div>
+	</div>	
+</section>
+<!-- End upcoming-exibition Area -->

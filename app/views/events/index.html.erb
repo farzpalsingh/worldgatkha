@@ -4,53 +4,47 @@
 	    <li class="breadcrumb-item">
 	    	<%= link_to "Dashboard", admin_index_path %>
 	    </li>
-	    <li class="breadcrumb-item">News</li>
-	    <li class="breadcrumb-item active">All News</li>
+	    <li class="breadcrumb-item">Events</li>
+	    <li class="breadcrumb-item active">All Events</li>
 	</ol>
 
 	<!-- Page Content -->
-	<h3>All News</h3>
+	<h3>All Events</h3>
 	<hr>
 	<!-- DataTables Example -->
   	<div class="card mb-3">
     	<div class="card-header">
       		<i class="fa fa-table"></i>
-      		All News
+      		All Events
   		</div>
     	<div class="card-body">
       		<div class="table-responsive">
         		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           			<thead>
 			            <tr>
-			            	<!-- <th width="15%">Image</th> -->
 			              	<th width="20%">Title</th>
 			              	<th width="40%">Description</th>
-			              	<th width="15%">Date</th>
-			              	<th width="15%">Status</th>
+			              	<th width="13%">Date</th>
+			              	<th width="17%">Video Url</th>
 			              	<th width ="10%">Action</th>
 			            </tr>
           			</thead>
           			<tbody>
-          				<% @news.each do |n| %>
+          				<% @events.each do |event| %>
 				            <tr>
-				              	<!-- <td>-</td> -->
-				              	<td><%= n.title %></td>
+				              	<td><%= truncate(event.title, :length => 20) %></td>
 				              	<td>
-				              		<%#= n.description %>
-				              		<%= truncate(n.description, :length => 60) %>
+				              		<%= truncate(event.description, :length => 50) %>
 				              	</td>
-				              	<td><%= n.datetime.strftime("%d %b %Y") %></td>
-				              	<% if n.is_active? %>
-				              		<td>Active</td>
-				              	<% else %>
-				              		<td>Inactive</td>
-				              	<% end %>
+				              	<td><%= event.datetime.strftime("%d %b %Y") %></td>
+				              	<td>
+				              		<%= link_to truncate(event.video_url, :length => 30), event.video_url %>
+				              	</td>
 				              	<td>
 				              		<ul class="d-flex justify-content-around align-items-center adminActions mb-0">
-				              			<li><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_news_path(n) %></li>
-				              			<li><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_news_path(n), method: :delete, data: {confirm: 'Are you Sure?'} %></li>
-				              		</ul>
-				              		
+				              			<li><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_event_path(event) %></li>
+				              			<li><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_event_path(event), method: :delete, data: {confirm: 'Are you Sure?'} %></li>
+				              		</ul>				              		
 				              	</td>
 				            </tr>
             			<% end %>
