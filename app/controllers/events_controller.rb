@@ -25,31 +25,35 @@ class EventsController < ApplicationController
 
 	def create
 		@event = Event.new(event_params)
-		regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-    	match = regex.match (params[:event][:video_url]).to_str
+		match = checkMatch(params[:event][:video_url])
     	if match && !match[1].blank?
 			if @event.save
 				redirect_to admin_all_events_path
+				flash[:notice] = "Event saved successfully"
 			else
 				render 'new'
+				flash[:errors] = @event.errors.full_messages
 			end
 		else
 			render 'new'
+			flash[:alert] = "Enter valid Youtube Url"
 		end
 	end
 
 	def update
 		@event = Event.find(params[:id])
-		regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-    	match = regex.match (params[:event][:video_url]).to_str
+		match = checkMatch(params[:event][:video_url])
     	if match && !match[1].blank?
 			if @event.update(event_params)
 				redirect_to admin_all_events_path
+				flash[:notice] = "Event updated successfully"
 			else
 				render 'edit'
+				flash[:errors] = @event.errors.full_messages
 			end
 		else
 			render 'edit'
+			flash[:alert] = "Enter valid Youtube Url"
 		end
 	end
 
@@ -57,6 +61,13 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 		@event.destroy
 		redirect_to admin_all_events_path
+		flash[:notice] = "Event deleted successfully"
+	end
+
+	def checkMatch(url)
+		regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    	match = regex.match (url).to_str
+    	match
 	end
 
 	private

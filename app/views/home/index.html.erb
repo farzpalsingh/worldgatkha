@@ -91,7 +91,8 @@
 			<div class="col-lg-12">
 				<h1 class="mb-10">World Gatka Federation</h1>
 				<h5 class="mb-20">Lets Play Gutka</h5>
-				<p>Gatka is commonly referred to as an India Martial art. Specifically Gatka refers to the martial art used by the of northern India. Actually Gatka is the name of a stick used to practice sword fighting. The word Gatka is a slang expression coined in the nineteen hundreds to describe a number of stick, staff and sword styles made for use in public demonstration.</p>
+				<p>Indian martial art 'Gatka' is associated with the Sikhs history and an integral part of an array of Sikh Shastar Vidiya developed during 15th century for self-defence. It was a battle technique of Sikh warriors during the martial period of great Sikh Gurus. The present form further perfected into a sport in the later 19th century. Gatka is performed & played in two sub-styles called Rasmi (traditional) and Khel (sport) respectively in the Northern India since 1920.</p>
+				<p>Gatka was generally at public display during religious processions but Punjab Gatka Association (PGA), Chandigarh Gatka Association (CGA) and Gatka Federation of India (GFI), under the aegis of World Gatka Federation, have taken major initiatives for its revival and promotion by putting this rare martial art into practice as a sport in India and worldwide. It is a humble effort to revive this forgotten and dying art having a historical significance. In order to preserve, promote and showcase this rare Sikh martial art at national & international level, these Gatka sports organizations are producing a documentary film on Gatka.</p>
 			</div>
 		</div>
 	</div>	
@@ -113,7 +114,7 @@
 			<div class="active-exibition-carusel owl-carousel">
 				<% @events.each do |event| %>
 					<div class="single-exibition item">
-						<%= Event.getYoutubeIframe(event.video_url) %>
+						<%= event.embedUrl %>
 						<a href="#"><h4><%= event.title %></h4></a>
 						<p>
 							<%= truncate(event.description, :length => 90) %>

@@ -30,9 +30,14 @@
 			<% @events.each do |event| %>
 				<div class="col-lg-4 col-md-6 single-exhibition">
 					<div class="thumb">
-						<%= Event.getYoutubeIframe(event.video_url) %>					
+						<%= event.embedUrl %>					
 					</div>
-					<p class="date"><%= event.datetime.strftime("%d %b %Y") %></p>
+					<div class="eventDte">
+						<p class="date"><%= event.datetime.strftime("%d %b %Y") %></p>
+						<% if event.created_at >= (Time.now-2.days) %>
+							<span>new</span>
+						<% end %>
+					</div>
 					<a href="#"><h4><%= event.title %></h4></a>
 					<p>
 						<%= truncate(event.description, :length => 120) %>

@@ -3,8 +3,8 @@ class GalleryController < ApplicationController
 	layout false, :except => [:images, :videos]
   	layout 'admin', :except => [:images, :videos]
 	
-	def images
-	end
+	# def images
+	# end
 
 	def videos
 		@gallery_videos = GalleryVideo.all
@@ -26,8 +26,7 @@ class GalleryController < ApplicationController
 
 	def createVideo
 		@gallery_video = GalleryVideo.new(video_params)
-		regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-    	match = regex.match (params[:gallery_video][:video_url]).to_str
+		match = checkMatch(params[:gallery_video][:video_url])
     	if match && !match[1].blank?
 			if @gallery_video.save
 				redirect_to admin_gallery_all_videos_path
@@ -41,8 +40,7 @@ class GalleryController < ApplicationController
 
 	def updateVideo	
 		@gallery_video = GalleryVideo.find(params[:id])
-		regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-    	match = regex.match (params[:gallery_video][:video_url]).to_str
+    	match = checkMatch(params[:gallery_video][:video_url])
     	if match && !match[1].blank?
 			if @gallery_video.update(video_params)
 				redirect_to admin_gallery_all_videos_path
@@ -58,6 +56,12 @@ class GalleryController < ApplicationController
 		@gallery_video = GalleryVideo.find(params[:id])
 		@gallery_video.destroy
 		redirect_to admin_gallery_all_videos_path
+	end
+
+	def checkMatch(url)
+		regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    	match = regex.match (url).to_str
+    	match
 	end
 
 	private

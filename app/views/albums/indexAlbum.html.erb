@@ -1,0 +1,45 @@
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">	
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Our Gallery			
+				</h1>	
+				<p class="text-white link-nav"><%= link_to 'Home', home_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Gallery', '#' %> <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Albums', gallery_albums_path %></p>
+			</div>											
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->	
+
+
+<!-- Start gallery Area -->
+<section class="gallery-area section-gap gallery-page-area">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-20 col-lg-8">
+				<div class="title text-center">
+					<h1 class="mb-10">Our Gallery Albums</h1>
+					<p>Lets Play Gutka</p>
+				</div>
+			</div>
+		</div>						
+		<div class="d-flex flex-wrap" id="grid-container-album">
+			<% @albums.each do |album| %>
+				<div class="albumSecWrap">
+					<%= link_to gallery_album_attachments_path(album), class: "albumSecLink" do %>
+						<div class="albumSec" style="background: url(<%= album.attachments.last.attachment.url %>) no-repeat center center / cover">
+							<div class="d-flex flex-column justify-content-end albumSecInn">
+								<h2 class="albumName"><%= album.title %></h2>
+								<h4 class="albumImagesCount"><%= album.attachments.count %> Items</h4>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>	
+	</div>	
+</section>
+<!-- End gallery Area -->

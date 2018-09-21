@@ -239,7 +239,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
     position: absolute !important;
     -webkit-transform: none !important;
     transform: none !important;
-    left: calc(90px + 0.5rem) !important;
+    left: 90px !important;
     margin: 0;
   }
   .sidebar.toggled .nav-item .dropdown-menu.dropup {
@@ -400,5 +400,31 @@ body.sidebar-toggled footer.sticky-footer {
 .addNewsForm{padding-bottom: 30px;}
 .table th, .table td{padding: 8px 10px; font-size: 14px;}
 .adminActions{display: flex;justify-content: space-around;}
+
+.addVideoBx{position: relative;padding-right: 130px;}
+.addVideoBx .btn-primary{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 33px;
+  line-height: 32px;
+  padding: 0px 10px;
+  font-size: 16px;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+.albumImageWrap{margin-bottom: 20px;}
+.albumImage{
+  margin-bottom: 10px;
+  width: 100%;
+  height: 90px;
+}
+.deleteAlbumImage{    
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  font-size: 15px;
+}
+
 
 /* New Css 5 Sept 2018 Ends */

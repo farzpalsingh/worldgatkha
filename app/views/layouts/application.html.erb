@@ -47,16 +47,16 @@
           </div>
           <div class="col-6 top-head-right">
             <ul>
-              <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="javascript:;"><i class="fa fa-rss"></i></a></li>
+              <li><a href="https://www.facebook.com/WORLD-GATKA-Federation-871240016276068/"><i class="fa fa-facebook"></i></a></li>
+              <!-- <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li> -->
+              <li><a href="https://plus.google.com/u/2/101301337271453275821/posts"><i class="fa fa-google-plus"></i></a></li>
+              <!-- <li><a href="javascript:;"><i class="fa fa-rss"></i></a></li> -->
             </ul>
           </div>              
         </div>
       </div>
       <hr>
-      <div class="container">
+      <div class="container header-bot">
         <div class="row align-items-center justify-content-between d-flex">
           <div id="logo">
             <a href="index.html"><img src="/assets/logo.jpg" alt="" title="" /></a>
@@ -64,17 +64,25 @@
           <nav id="nav-menu-container">
             <ul class="nav-menu">
               <li class="menu-active"><%= link_to 'Home', home_path %></li>
+              <li class="menu-has-children">
+                <%= link_to 'Activity', 'javascript:;' %>
+                <ul>
+                  <li><%= link_to 'Age Groups & Events', activity_categories_path %></li>
+                  <li><%= link_to 'Types of Tournaments', activity_tournaments_path %></li>
+                </ul>
+              </li>
               <li><%= link_to 'Events', events_path %></li>
               <li class="menu-has-children">
                 <%= link_to 'Gallery', 'javascript:;' %>
                 <ul>
-                  <li><%= link_to 'Images', gallery_images_path %></li>
+                  <li><%= link_to 'Albums', gallery_albums_path %></li>
                   <li><%= link_to 'Videos', gallery_videos_path %></li>
                 </ul>
               </li>
+              <li><%= link_to 'History', history_path %></li>
+              <li><%= link_to 'Advertise With Us', advertise_with_us_path %></li>
               <li><%= link_to 'About Us', about_us_path %></li>
-              <li><%= link_to 'Contact Us', contact_us_path %></li>
-                            
+              <li><%= link_to 'Contact Us', contact_us_path %></li>                            
             </ul>
           </nav><!-- #nav-menu-container -->            
         </div>
@@ -138,7 +146,8 @@
     <!-- <script src="/assets/application.js"></script> -->
     <script src="/assets/bootstrap.min.js"></script>      
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-    <script src="/assets/easing.min.js"></script>      
+    <script src="/assets/easing.min.js"></script>
+    <script src="/assets/notify.js"></script>
     <script src="/assets/hoverIntent.js"></script>
     <script src="/assets/superfish.min.js"></script> 
     <script src="/assets/jquery.ajaxchimp.min.js"></script>
@@ -149,7 +158,7 @@
     <script src="/assets/jquery.sticky.js"></script>
     <script src="/assets/jquery.nice-select.min.js"></script>      
     <script src="/assets/parallax.min.js"></script>    
-    <script src="/assets/mail-script.js"></script> 
+    <!-- <script src="/assets/mail-script.js"></script>  -->
     <script src="/assets/main.js"></script>
     <script>
       $(function(){
@@ -163,6 +172,42 @@
               }
           })
       })
+    </script>
+    <script>
+      <% if flash[:notice].present? %>
+        message = "<%= flash[:notice]%>"
+        type = 'info'
+        notification(message,type)
+      <%end%>
+
+      <% if flash[:alert].present? %>
+        message = "<%= flash[:alert]%>"
+        type = 'info'
+        notification(message,type)
+      <%end%>
+
+      <% if flash[:message].present?%>
+        message = "<%= flash[:message]%>"
+        type = 'info'
+        notification(message,type)
+      <%end%>
+
+      <% if flash[:errors].present?%>
+        <%flash[:errors].each do |err|%>
+          message = "<%= err.html_safe %>"
+          type = 'info'
+          notification(message,type)
+        <%end%>
+      <% end %>
+
+      function notification(message,type){
+        $.notify(message, {
+          className:type,
+          clickToHide: false,
+          globalPosition: 'top rights',
+          autoHideDelay: 3000
+        });
+      }
     </script>
   </body>
 </html>

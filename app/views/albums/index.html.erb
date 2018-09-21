@@ -1,0 +1,61 @@
+<div class="container-fluid">
+	<!-- Breadcrumbs-->
+	<ol class="breadcrumb">
+	    <li class="breadcrumb-item">
+	    	<%= link_to "Dashboard", admin_index_path %>
+	    </li>
+	    <li class="breadcrumb-item">Gallery</li>
+	    <li class="breadcrumb-item active">All Albums</li>
+	</ol>
+
+	<!-- Page Content -->
+	<div class="addVideoBx">
+		<h3>All Albums</h3>
+		<%= link_to "Add Album", admin_gallery_album_new_path, class: "btn btn-primary" %>
+	</div>
+	<hr>
+	<!-- DataTables Example -->
+  	<div class="card mb-3">
+    	<div class="card-header">
+      		<i class="fa fa-table"></i>
+      		All Albums
+  		</div>
+    	<div class="card-body">
+      		<div class="table-responsive">
+        		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          			<thead>
+			            <tr>
+			              	<th width="45%">Title</th>
+			              	<th width="40%">Total Images</th>
+			              	<th width ="15%">Action</th>
+			            </tr>
+          			</thead>
+          			<tbody>
+          				<% @albums.each do |album| %>
+				            <tr>
+				              	<td><%= album.title %></td>
+				              	<td>
+				              		<%= album.attachments.count %>
+				              	</td>
+				              	<td>
+				              		<ul class="d-flex justify-content-around align-items-center adminActions mb-0">
+				              			<li>
+				              				<%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, admin_gallery_album_path(album), "data-toggle" => "tooltip", "data-placement" => "top", :title => "View Album" %>
+				              			</li>
+				              			<li>
+				              				<%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_gallery_album_path(album), "data-toggle" => "tooltip", "data-placement" => "top", :title => "Edit Album" %>
+				              			</li>
+				              			<li>
+				              				<%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_gallery_album_path(album), method: :delete, data: {confirm: 'Are you Sure?'}, "data-toggle" => "tooltip", "data-placement" => "top", :title => "Delete Album" %>			              				
+				              			</li>
+				              		</ul>				              		
+				              	</td>
+				            </tr>
+            			<% end %>
+          			</tbody>
+        		</table>
+      		</div>
+    	</div>
+  	</div>
+</div>
+<!-- /.container-fluid -->

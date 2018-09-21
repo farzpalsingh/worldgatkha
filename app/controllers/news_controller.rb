@@ -28,26 +28,28 @@ class NewsController < ApplicationController
 		@news = News.new(news_params)
 		# @news.attachment.new
 		if @news.save
-			if params[:attachment].present?
+			if params[:news][:attachments][:attachment].present?
 				@attachment = @news.attachments.create(attachment_params)
 			end
 			
 			redirect_to admin_all_news_path
 		else
 			render 'new'
+			flash[:errors] = @news.errors.full_messages
 		end
 	end
 
 	def update
 		@news = News.find(params[:id])
 		if @news.update(news_params)
-			if params[:attachment].present?
+			if params[:news][:attachments][:attachment].present?
 				@attachment = @news.attachments.find(params[:news][:attachments][:attachment_id])
 				@attachment.update(attachment_params)
 			end
 			redirect_to admin_all_news_path
 		else
 			render 'edit'
+			flash[:errors] = @news.errors.full_messages
 		end
 	end
 
@@ -55,6 +57,7 @@ class NewsController < ApplicationController
 		@news = News.find(params[:id])
 		@news.destroy
 		redirect_to admin_all_news_path
+		flash[:notice] = "Event deleted successfully"
 	end
 
 	private

@@ -2,8 +2,8 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  layout false
-  layout 'admin_signin'
+  # layout false
+  # layout 'admin_signin'
   # GET /resource/sign_in
   # def new
   #   super

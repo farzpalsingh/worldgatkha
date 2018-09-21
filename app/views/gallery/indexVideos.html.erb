@@ -9,7 +9,10 @@
 	</ol>
 
 	<!-- Page Content -->
-	<h3>All Videos</h3>
+	<div class="addVideoBx">
+		<h3>All Videos</h3>
+		<%= link_to "Add Video", admin_gallery_video_new_path, class: "btn btn-primary" %>
+	</div>
 	<hr>
 	<!-- DataTables Example -->
   	<div class="card mb-3">
@@ -37,10 +40,10 @@
 				              	<td>
 				              		<ul class="d-flex justify-content-around align-items-center adminActions mb-0">
 				              			<li>
-				              				<%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_gallery_video_path(video) %>
+				              				<%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_gallery_video_path(video), "data-toggle" => "tooltip", "data-placement" => "top", :title => "Edit Video" %>
 				              			</li>
 				              			<li>
-				              				<%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_gallery_video_path(video), method: :delete, data: {confirm: 'Are you Sure?'} %>			              				
+				              				<%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_gallery_video_path(video), method: :delete, data: {confirm: 'Are you Sure?'}, "data-toggle" => "tooltip", "data-placement" => "top", :title => "Delete Video" %>			              				
 				              			</li>
 				              		</ul>				              		
 				              	</td>
@@ -50,7 +53,6 @@
         		</table>
       		</div>
     	</div>
-    	<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   	</div>
 </div>
 <!-- /.container-fluid -->

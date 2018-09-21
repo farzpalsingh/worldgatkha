@@ -33,21 +33,11 @@
 
     <!-- Core plugin JavaScript-->
     <script src="/assets/jquery.easing.min.js"></script>
-
+    
     <!-- Page level plugin JavaScript-->
     <!-- <script src="/assets/Chart.min.js"></script> -->
     <script src="/assets/jquery.dataTables.js"></script>
     <script src="/assets/dataTables.bootstrap4.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/assets/sb-admin.min.js"></script>
-    <!-- <script src="/assets/application.js"></script> -->
-
-    <!-- Demo scripts for this page-->
-    <!--  <script src="/assets/chart-area-demo.js"></script>
-    <script src="/assets/chart-bar-demo.js"></script>
-    <script src="/assets/chart-pie-demo.js"></script> -->
-    <script src="/assets/datatables-demo.js"></script>
 
     <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -121,31 +111,13 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item active">
-          <!-- <a class="nav-link" href="index.html">
-            <i class="fa fa-fw fa-tachometer"></i>
-            <span>Dashboard</span>
-          </a> -->
           <%= link_to '<i class="fa fa-fw fa-tachometer"></i><span>Dashboard</span>'.html_safe, admin_index_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-            <span>News</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <%= link_to "All News", admin_all_news_path, class: "dropdown-item" %>
-            <%= link_to "Add News", admin_news_new_path, class: "dropdown-item" %>
-          </div>
+        <li class="nav-item">
+          <%= link_to '<i class="fa fa-fw fa-newspaper-o" aria-hidden="true"></i><span>News</span>'.html_safe, admin_all_news_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            <span>Events</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <%= link_to "All Events", admin_all_events_path, class: "dropdown-item" %>
-            <%= link_to "Add Event", admin_event_new_path, class: "dropdown-item" %>
-          </div>
+        <li class="nav-item">
+          <%= link_to '<i class="fa fa-fw fa-calendar" aria-hidden="true"></i><span>Events</span>'.html_safe, admin_all_events_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -153,8 +125,8 @@
             <span>Gallery</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <%= link_to "All Videos", admin_gallery_all_videos_path, class: "dropdown-item" %>
-            <%= link_to "Add Video", admin_gallery_video_new_path, class: "dropdown-item" %>
+            <%= link_to "Albums", admin_gallery_all_albums_path, class: "dropdown-item" %>
+            <%= link_to "Videos", admin_gallery_all_videos_path, class: "dropdown-item" %>
           </div>
         </li>
       </ul>
@@ -198,14 +170,24 @@
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
             <% if user_signed_in? %>
-      			  <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: {confirm: 'Are you Sure you want to log out?'}, class: "btn btn-primary" %>
+      			  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
       			<% end %>
             <!-- <a class="btn btn-primary" href="login.html">Logout</a> -->
           </div>
         </div>
       </div>
     </div>
-    
+
+    <!-- Custom scripts for all pages-->
+    <script src="/assets/notify.js"></script>
+    <script src="/assets/sb-admin.min.js"></script>
+    <!-- <script src="/assets/application.js"></script> -->
+
+    <!-- Demo scripts for this page-->
+    <!--  <script src="/assets/chart-area-demo.js"></script>
+    <script src="/assets/chart-bar-demo.js"></script>
+    <script src="/assets/chart-pie-demo.js"></script> -->
+    <script src="/assets/datatables-demo.js"></script>
     <script>
       $(function(){
           var current = location.pathname;
@@ -217,7 +199,46 @@
                   $this.closest('.nav-item').addClass('active');
               }
           })
+      });
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
       })
+    </script>
+    <script>
+      <% if flash[:notice].present? %>
+        message = "<%= flash[:notice]%>"
+        type = 'success'
+        notification(message,type)
+      <%end%>
+
+      <% if flash[:alert].present? %>
+        message = "<%= flash[:alert]%>"
+        type = 'warn'
+        notification(message,type)
+      <%end%>
+
+      <% if flash[:message].present?%>
+        message = "<%= flash[:message]%>"
+        type = 'info'
+        notification(message,type)
+      <%end%>
+
+      <% if flash[:errors].present?%>
+        <%flash[:errors].each do |err|%>
+          message = "<%= err.html_safe %>"
+          type = 'error'
+          notification(message,type)
+        <%end%>
+      <% end %>
+
+      function notification(message,type){
+        $.notify(message, {
+          className:type,
+          clickToHide: false,
+          globalPosition: 'top right',
+          autoHideDelay: 3000
+        });
+      }
     </script>
   </body>
 

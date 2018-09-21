@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<!-- Breadcrumbs-->
+	<ol class="breadcrumb">
+	    <li class="breadcrumb-item">
+	    	<%= link_to "Dashboard", admin_index_path %>
+	    </li>
+	    <li class="breadcrumb-item">Gallery</li>
+	    <li class="breadcrumb-item active">Album Images</li>
+	</ol>
+
+	<!-- Page Content -->
+	<div class="addVideoBx">
+		<h3>Album Images</h3>
+		<%= link_to "Add Images", edit_admin_gallery_album_path(@album), class: "btn btn-primary" %>
+	</div>
+	<hr>
+	<!-- DataTables Example -->
+  	<div class="card mb-3">
+    	<div class="card-header">
+      		<i class="fa fa-table"></i>
+      		Album Images
+  		</div>
+    	<div class="card-body">
+      		<div class="row">
+	        	<% @album.attachments.each do |attachment| %>
+	        		<div class="col-md-3 albumImageWrap">
+	        			<div class="albumImage" style="background: url(<%= attachment.attachment.url %>) no-repeat center center / cover;width: 100%;height: 150px;">
+	        			</div>
+	        			<%= link_to "Delete Image", admin_gallery_album_attachment_path(@album.id, attachment), method: :delete, data: {confirm: 'Are you Sure?'}, class: "btn btn-info deleteAlbumImage" %>
+	        			<%#= image_tag(attachment.attachment.url, class: 'media-object', style: 'width: 100%') %>
+		        	</div>
+		        <% end %>
+		    </div>
+    	</div>
+  	</div>
+</div>
+<!-- /.container-fluid -->

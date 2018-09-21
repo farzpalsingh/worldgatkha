@@ -7,13 +7,12 @@
 				<h1 class="text-white">
 					Our Gallery			
 				</h1>	
-				<p class="text-white link-nav"><%= link_to 'Home', home_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Gallery', '#' %> <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Videos', gallery_videos_path %></p>
+				<p class="text-white link-nav"><%= link_to 'Home', home_path %>  <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Gallery', '#' %> <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Albums', gallery_albums_path %> <span class="lnr lnr-arrow-right"></span>  <%= link_to 'Images', gallery_album_attachments_path %></p>
 			</div>											
 		</div>
 	</div>
 </section>
-<!-- End banner Area -->	
-
+<!-- End banner Area -->
 
 <!-- Start gallery Area -->
 <section class="gallery-area section-gap gallery-page-area" id="gallery">
@@ -21,16 +20,16 @@
 		<div class="row d-flex justify-content-center">
 			<div class="menu-content pb-20 col-lg-8">
 				<div class="title text-center">
-					<h1 class="mb-10">Our Gallery Videos</h1>
+					<h1 class="mb-10">Our Gallery Images</h1>
 					<p>Lets Play Gutka</p>
 				</div>
 			</div>
 		</div>						
-		<div id="grid-container-video" class="row">
-			<% @gallery_videos.each do |video| %>
-				<div class="single-gallery-video">
-					<%= video.embedUrl %>
-				</div>
+		<div id="grid-container" class="row">
+			<% @album.attachments.each do |attachment| %>
+				<%= link_to attachment.attachment.url, class: "single-gallery" do %>
+					<%= image_tag(attachment.attachment.url, class: 'grid-item') %>
+				<% end %>
 			<% end %>
 		</div>	
 	</div>	

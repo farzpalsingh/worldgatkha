@@ -9,7 +9,10 @@
 	</ol>
 
 	<!-- Page Content -->
-	<h3>All News</h3>
+	<div class="addVideoBx">
+		<h3>All News</h3>
+		<%= link_to "Add News", admin_news_new_path, class: "btn btn-primary" %>
+	</div>
 	<hr>
 	<!-- DataTables Example -->
   	<div class="card mb-3">
@@ -47,8 +50,8 @@
 				              	<% end %>
 				              	<td>
 				              		<ul class="d-flex justify-content-around align-items-center adminActions mb-0">
-				              			<li><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_news_path(n) %></li>
-				              			<li><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_news_path(n), method: :delete, data: {confirm: 'Are you Sure?'} %></li>
+				              			<li><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_news_path(n), "data-toggle" => "tooltip", "data-placement" => "top", :title => "Edit News" %></li>
+				              			<li><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_news_path(n), method: :delete, data: {confirm: 'Are you Sure?'}, "data-toggle" => "tooltip", "data-placement" => "top", :title => "Delete News" %></li>
 				              		</ul>
 				              		
 				              	</td>
@@ -58,7 +61,6 @@
         		</table>
       		</div>
     	</div>
-    	<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   	</div>
 </div>
 <!-- /.container-fluid -->

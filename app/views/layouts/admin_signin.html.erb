@@ -32,67 +32,7 @@
   <body class="bg-dark">
 
     <div class="container">
-      <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
-        <div class="card-body">
-          <!-- <form>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                <label for="inputEmail">Email address</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">Password</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value="remember-me">
-                  Remember Password
-                </label>
-              </div>
-            </div>
-            <a class="btn btn-primary btn-block" href="index.html">Login</a>
-          </form> -->
-
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="form-group">
-              <div class="form-label-group">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "Email address" %>
-                <%= f.label :email %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-label-group">
-                <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: "Password" %>
-                <%= f.label :password %>
-              </div>
-            </div>
-
-            <% if devise_mapping.rememberable? -%>
-              <div class="form-group">
-                <div class="checkbox">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
-                </div>
-              </div>
-            <% end -%>
-
-            <div class="actions">
-              <%= f.submit "Log in", :class => 'btn btn-primary btn-block' %>
-            </div>
-          <% end %>
-          <div class="text-center">
-            <!-- <a class="d-block small mt-3" href="register.html">Register an Account</a> -->
-            <a class="d-block small mt-3" href="forgot-password.html">Forgot Password?</a>
-          </div>
-        </div>
-      </div>
+      <%= yield %>
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -101,6 +41,41 @@
 
     <!-- Core plugin JavaScript-->
     <script src="/assets/jquery.easing.min.js"></script>
+    <script>
+      <% if flash[:notice].present? %>
+        message = "<%= flash[:notice]%>"
+        type = 'success'
+        notification(message,type)
+      <%end%>
 
+      <% if flash[:alert].present? %>
+        message = "<%= flash[:alert]%>"
+        type = 'warn'
+        notification(message,type)
+      <%end%>
+
+      <% if flash[:message].present?%>
+        message = "<%= flash[:message]%>"
+        type = 'info'
+        notification(message,type)
+      <%end%>
+
+      <% if flash[:errors].present?%>
+        <%flash[:errors].each do |err|%>
+          message = "<%= err.html_safe %>"
+          type = 'error'
+          notification(message,type)
+        <%end%>
+      <% end %>
+
+      function notification(message,type){
+        $.notify(message, {
+          className:type,
+          clickToHide: false,
+          globalPosition: 'top right',
+          autoHideDelay: 3000
+        });
+      }
+    </script>
   </body>
 </html>

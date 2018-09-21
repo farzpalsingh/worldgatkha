@@ -20,7 +20,7 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-8 post-list blog-post-list">
 				<div class="single-post">
-					<%= Event.getYoutubeIframe(@event.video_url) %>
+					<%= @event.embedUrl %>
 					<p class="date"><%= @event.datetime.strftime("%d %b %Y") %></p>
 					<h1>
 						<%= @event.title %>

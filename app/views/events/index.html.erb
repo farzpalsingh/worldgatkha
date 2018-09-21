@@ -9,7 +9,10 @@
 	</ol>
 
 	<!-- Page Content -->
-	<h3>All Events</h3>
+	<div class="addVideoBx">
+		<h3>All Events</h3>
+		<%= link_to "Add Event", admin_event_new_path, class: "btn btn-primary" %>
+	</div>
 	<hr>
 	<!-- DataTables Example -->
   	<div class="card mb-3">
@@ -42,8 +45,8 @@
 				              	</td>
 				              	<td>
 				              		<ul class="d-flex justify-content-around align-items-center adminActions mb-0">
-				              			<li><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_event_path(event) %></li>
-				              			<li><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_event_path(event), method: :delete, data: {confirm: 'Are you Sure?'} %></li>
+				              			<li><%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_admin_event_path(event), "data-toggle" => "tooltip", "data-placement" => "top", :title => "Edit Event" %></li>
+				              			<li><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, admin_event_path(event), method: :delete, data: {confirm: 'Are you Sure?'}, "data-toggle" => "tooltip", "data-placement" => "top", :title => "Delete Event" %></li>
 				              		</ul>				              		
 				              	</td>
 				            </tr>
@@ -52,7 +55,6 @@
         		</table>
       		</div>
     	</div>
-    	<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   	</div>
 </div>
 <!-- /.container-fluid -->

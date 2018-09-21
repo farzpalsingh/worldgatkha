@@ -56,6 +56,7 @@ body {
   font-weight: 300;
   line-height: 1.625em;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 ol, ul {
@@ -759,7 +760,24 @@ td, th {
 .section-bg {
   background: #f9fafc;
 }
-
+.infoListNumber {
+  list-style-type: decimal;
+  list-style-position: inside;
+  line-height: 25px;
+}
+.infoListAlpha {
+    list-style-type: upper-alpha;
+    list-style-position: inside;
+    line-height: 25px;
+}
+.infoListAlpha > li > ul, .infoListAlpha > li > p{
+  padding-left: 30px;
+  margin-top: 15px;
+}
+.infoListAlphaInn {
+    list-style-type: decimal;
+}
+.infoListAlphaInn b{color: #000;}
 @media (max-width: 767px) {
   .no-flex-xs {
     display: block !important;
@@ -1981,8 +1999,17 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   display: none;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 99;
+}
+.nav-menu ul:after {
+  position: absolute;
+  content: "";
+  border-bottom: 5px solid #FFF;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  bottom: 100%;
+  right: 15px;
 }
 
 .nav-menu li {
@@ -2070,7 +2097,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #333;
   transition: 0.3s;
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   text-transform: none;
 }
 
@@ -2084,10 +2111,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Mobile Nav Toggle */
 #mobile-nav-toggle {
-  position: fixed;
-  right: 15px;
+  /*position: fixed;*/
+  position: absolute;
+  right: 10px;
   z-index: 999;
-  top: 50px;
+  /*top: 50px;*/
+  top: 50%;
   border: 0;
   background: none;
   font-size: 24px;
@@ -2095,6 +2124,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.4s;
   outline: none;
   cursor: pointer;
+  transform: translate(0,-50%);
 }
 
 #mobile-nav-toggle i {
@@ -2102,7 +2132,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 991px) {
   #mobile-nav-toggle {
     display: inline;
   }
@@ -2614,7 +2644,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 800px) {
   .single-blog {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 }
 
@@ -2780,7 +2810,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 991.98px) {
   .single-footer-widget {
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
   }
 }
 
@@ -2909,12 +2939,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   box-shadow: 0px 0px 50px 0px rgba(157, 157, 157, 0.3);
   position: relative;
   background: #fff;
-  padding: 80px 100px 80px 40px;
+  padding: 40px 80px 40px 30px;
 }
 
 @media (max-width: 575.98px) {
   .info-area .info-content {
-    margin-top: 30px;
+    margin-top: 0px;
   }
 }
 
@@ -2931,7 +2961,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 991.98px) {
   .info-area .info-content:after {
-    width: 50px;
+    width: 50px;content: none;
   }
 }
 
@@ -2943,7 +2973,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 991.98px) {
   .info-area .info-content {
-    padding: 30px 30px 30px 0;
+    padding: 30px;
   }
 }
 
@@ -2972,7 +3002,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 @media (max-width: 800px) {
   .info-area .info-left {
     margin-top: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
   }
 }
 
@@ -3038,8 +3068,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 30px;
 }
 
-.contact-page-area {
+.contact-page {
   background: #f4f4f4;
+}
+
+.contact-page-area {
+  background: #FFF;
 }
 
 .contact-page-area .map-wrap {
@@ -3093,7 +3127,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 960px) {
   .contact-page-area .address-wrap {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
 }
 
@@ -3550,12 +3584,124 @@ body.mobile-nav-active #mobile-nav-toggle {
     background: #f4f4f4;
 }
 .blog-posts-area .single-post{margin-bottom: 0px;}
+.albumSecWrap {
+    width: 32%;
+    margin-right: 2%;
+    margin-bottom: 20px;
+}
+.albumSecWrap:nth-child(3n){
+  margin-right: 0px;
+}
+.albumSecLink {
+    display: block;
+}
+.albumSec{width: 100%; height: 200px;position: relative;  }
+.albumSecInn {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, .7));
+    padding: 15px;
+}
+.albumName {
+    font-size: 18px;
+    color: #FFF;
+    margin-bottom: 5px;
+}
+.albumImagesCount {
+    font-size: 13px;
+    font-weight: 400;
+    color: #FFF;
+}
+.single-exhibition:nth-last-child(-n+3){
+  margin-bottom: 0px;
+}
+.albumSecWrap:nth-last-child(-n+3){
+  margin-bottom: 0px;
+}
+.aboutBotContent{margin-bottom: 30px;}
+.aboutBotContent:last-child{margin-bottom: 0px;}
+.infoListNumberNW{margin-bottom: 20px;}
+.infoListNumberNW li {
+  margin-bottom: 15px;
+}
+.infoListNumberNW li:last-child{
+  margin-bottom: 0px;
+}
+.infoListNumberNW li b{display: block;}
+.aboutBotContentNW a {
+    line-height: 30px;
+    color: #0095ff;
+    font-weight: 400;
+}
+.aboutBotContentNW a:hover{
+  color: #88d200;
+}
+.header-bot{position: relative;}
+.infoListAlphaNW > li{margin-bottom: 15px;}
+.advertiseNote{margin-bottom: 0px;}
+.eventDte {
+    position: relative;
+    padding-right: 60px;
+}
+.eventDte span {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 20px;
+    height: 22px;
+    background: #d4edda;
+    color: #155724;
+    font-size: 12px;
+    border: 1px solid #c3e6cb;
+    display: -webkit-box;
+    padding: 0px 10px;
+    text-transform: capitalize;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+}
 
 /* New Css 4 Sept 2018 Ends */
+@media (max-width: 991px)
+{
+  .albumSecWrap {
+    width: 49%;
+    margin-right: 2%;
+  }
+  .albumSecWrap:nth-child(3n){
+    margin-right: 2%;
+  }
+  .albumSecWrap:nth-child(2n){
+    margin-right: 0px;
+  }
+  .single-exhibition:nth-last-child(3){margin-bottom: 30px;}
+  .single-info .mt-120{margin-top: 0px;}
+  .single-info.mt-40{margin-top: 10px;}
+  
+}
+
+@media (max-width: 767px)
+{
+  .section-gap {padding: 30px 0;}
+  h1 {font-size: 25px;}
+  h5{font-size: 14px;}
+  .menu-content.pb-20{padding-bottom: 10px;}
+  .about-content h1 {font-size: 35px;}
+  .single-exhibition:nth-last-child(2){margin-bottom: 30px;}
+  .footer-area h6 {margin-bottom: 15px;}
+}
+
 @media (max-width: 576px)
 {
+  p{font-size: 13px;}
   .single-exibition, .single-blogNW .single-blog {
-      padding: 15px;
+      padding: 0px 15px;
   }
+  .albumSecWrap {width: 100%; margin-right: 0px;}
+  .albumSec{height: 180px;}
 }
 
