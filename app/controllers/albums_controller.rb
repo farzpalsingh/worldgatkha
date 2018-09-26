@@ -12,11 +12,11 @@ class AlbumsController < ApplicationController
 	end
 
 	def indexAlbumImages
-		@album = Album.find(params[:id])
+		@album = Album.friendly.find(params[:id])
 	end
 
 	def show
-		@album = Album.find(params[:id])
+		@album = Album.friendly.find(params[:id])
 	end
 
 	def new
@@ -24,7 +24,7 @@ class AlbumsController < ApplicationController
 	end
 
 	def edit
-		@album = Album.find(params[:id])
+		@album = Album.friendly.find(params[:id])
 	end
 
 	def create
@@ -45,7 +45,7 @@ class AlbumsController < ApplicationController
 	end
 
 	def update
-		@album = Album.find(params[:id])
+		@album = Album.friendly.find(params[:id])
 		if @album.update(album_params)
 			if params[:album][:attachment].present?
 				params[:album][:attachment].each do |attachment|
@@ -62,7 +62,7 @@ class AlbumsController < ApplicationController
 	end
 
 	def destroy
-		@album = Album.find(params[:id])
+		@album = Album.friendly.find(params[:id])
 		@album.destroy
 		redirect_to admin_gallery_all_albums_path
 		flash[:notice] = "Album deleted successfully"

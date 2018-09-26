@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   # Activity Starts
   get 'activity/categories' => 'home#ageGroups'
   get 'activity/tournaments' => 'home#tournaments'
+  get 'activity/grading' => 'home#grading'
+  get 'activity/training_and_oath' => 'home#trainingAndOath'
   get 'history' => 'home#history'
   get 'advertise_with_us' => 'home#advertiseWithUs'
   # Activity Ends
