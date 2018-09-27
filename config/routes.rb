@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'activity/grading' => 'home#grading'
   get 'activity/training_and_oath' => 'home#trainingAndOath'
   get 'history' => 'home#history'
-  get 'advertise_with_us' => 'home#advertiseWithUs'
+  get 'gatka_promoters' => 'home#gatkaPromoters'
   # Activity Ends
 
   # News Starts
@@ -89,5 +89,6 @@ Rails.application.routes.draw do
 
   # Contact Us Starts
   get 'contact_us' => 'contact_us#index'
+  post 'contact_us/create' => 'contact_us#create'
   # Contact Us Ends
 end

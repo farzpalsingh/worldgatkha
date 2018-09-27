@@ -2675,8 +2675,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .footer-area {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
   background-color: #fff;
+}
+
+.footer-area-bot{
+  padding: 15px 0px;
+  border-top: 1px solid #eaeaea;
+  /*background: #DBE7EF;*/
+  background: #f1f9ff;
+}
+.footer-area-bot p a{    
+  color: #88d200;
+  font-weight: 400;
 }
 
 .footer-area h6 {
@@ -3075,6 +3086,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .contact-page-area {
   background: #FFF;
 }
+.contact-page-area .primary-btn{padding: 0px 40px !important;}
 
 .contact-page-area .map-wrap {
   margin-bottom: 120px;
@@ -3706,6 +3718,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 
   /* Loader Css Ends */
+  .bannerAreaInn{height: 100vh !important;}
 
 /* New Css 4 Sept 2018 Ends */
 @media (max-width: 991px)

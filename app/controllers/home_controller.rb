@@ -22,7 +22,7 @@ class HomeController < ApplicationController
   def history
   end
 
-  def advertiseWithUs
+  def gatkaPromoters
     
   end
 end
